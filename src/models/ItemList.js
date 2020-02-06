@@ -7,7 +7,6 @@ const ItemList = types
   })
   .actions(self => ({
     add(item) {
-      console.log("INSIDE MST", item);
       self.items.push(item);
     }
   }));

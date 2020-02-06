@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import Item from "./Item";
 import { observer } from "mobx-react";
 
 const initialFormValues = {
@@ -12,7 +13,6 @@ const Home = ({ invoice }) => {
   const nameRef = useRef(null);
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(formData);
     const fromatData = {
       name: formData.name,
       quantity: parseInt(formData.quantity, 10),
@@ -24,7 +24,6 @@ const Home = ({ invoice }) => {
   };
 
   const handleChange = ({ target: { name, value }, reset }) => {
-    console.log(name, value);
     setFormData(prevState => ({
       ...prevState,
       [name]: value
@@ -66,6 +65,11 @@ const Home = ({ invoice }) => {
         </label>
         <button type="submit">Add</button>
       </form>
+      <ul>
+        {invoice.itemList.items.map((item, idx) => (
+          <Item item={item} key={idx} />
+        ))}
+      </ul>
     </div>
   );
 };
