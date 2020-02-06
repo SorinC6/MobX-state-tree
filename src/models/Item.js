@@ -6,6 +6,14 @@ const Item = types
     price: types.number,
     name: types.string
   })
+  .actions(self => ({
+    increment() {
+      self.quantity = self.quantity + 1;
+    },
+    decrement() {
+      self.quantity = self.quantity - 1;
+    }
+  }))
   .views(self => ({
     total() {
       return self.quantity * self.price;
