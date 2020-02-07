@@ -1,4 +1,4 @@
-import { types } from "mobx-state-tree";
+import { types, getParent } from "mobx-state-tree";
 
 const Item = types
   .model("Item", {
@@ -12,6 +12,9 @@ const Item = types
     },
     decrement() {
       self.quantity = self.quantity - 1;
+    },
+    remove() {
+      getParent(self, 2).remove(self);
     }
   }))
   .views(self => ({

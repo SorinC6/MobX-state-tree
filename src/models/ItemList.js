@@ -8,6 +8,14 @@ const ItemList = types
   .actions(self => ({
     add(item) {
       self.items.push(item);
+    },
+    remove(item) {
+      self.items.splice(self.items.indexOf(item), 1);
+    }
+  }))
+  .views(self => ({
+    total() {
+      return self.items.reduce((sum, item) => sum + item.total(), 0);
     }
   }));
 

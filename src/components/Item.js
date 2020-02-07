@@ -8,6 +8,7 @@ const Item = ({ item }) => {
       {item.total().toFixed(2)}
       <button onClick={item.decrement}>-</button>
       <button onClick={item.increment}>+</button>
+      <button onClick={item.remove}>x</button>
     </li>
   );
 };
